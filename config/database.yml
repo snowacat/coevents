@@ -1,43 +1,26 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
 default: &default
   adapter: postgresql
-  host: localhost
-  username: postgres
-  password: student
-  database: diplom
-  port: 5432
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  port: <%= ENV['DB_PORT'] %>
 
 development:
-#  adapter: postgresql
-#  host: localhost
-#  username: footspot-dev
-#  password: 123
-#  database: diplom-dev
-# Home db
   adapter: postgresql
-  host: localhost
-  username: postgres
-  password: student
-  database: diplom
-  port: 5432
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  port: <%= ENV['DB_PORT'] %>
 
 production:
   adapter: postgresql
-  host: ec2-107-20-223-116.compute-1.amazonaws.com
-  username: hvrvyyxbaoqshm
-  password: YAsmczLeYdiy8FTg29Q4PuEz3q
-  database: dfa1c2479vdtcm
-  port: 5432
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>
+  port: <%= ENV['DB_PORT'] %>
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-
-#production:
-#  <<: *production
