@@ -1,0 +1,752 @@
+body {
+  background-color: rgba(249, 249, 249, 1) !important;
+}
+
+.b-logo {
+  background-size: 100% auto;
+  max-width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+a.less {
+  display: none;
+}
+
+#gender {
+  margin-right: 5px;
+  float: left;
+}
+
+#addEvent {
+  width: 220px;
+  margin: 0 auto;
+}
+
+#loginBox {
+  max-width: 335px;
+  margin: 0 auto 0 auto;
+  margin-top: 10vh;
+}
+
+#recaptcha_area {
+  margin: 0 auto;
+}
+
+#loginForm {
+  text-align: center;
+}
+
+#map-container {
+  margin-top: 25px;
+  width: 650px;
+  float: right;
+  border: 1px solid rgba(192, 192, 192, 0.66);
+  border-radius: 5px;
+}
+
+#map-canvas {
+  height: 500px;
+  width: 100%;
+}
+
+#resetPassword {
+  margin: 0 auto;
+  width: 245px;
+}
+
+#pickerStartTime, #pickerEndTime  {
+  cursor: text;
+  background-color: white;
+}
+
+#leftBoxTitle {
+  width: 241px;
+  float: left;
+}
+
+#verified {
+  margin-top: 9px;
+}
+
+#pickerBirthDate {
+  cursor: text;
+}
+
+.eventLight:hover {
+  background-color: #E4E7FF;
+  cursor: pointer;
+}
+
+.formField label {
+  line-height: 30px !important;
+}
+
+.boxApprove {
+  width: 100%;
+  height: 30px;
+}
+
+.approve {
+  float: right;
+}
+
+.listCountry {
+  max-height: 20px;
+}
+
+.tblActions a {
+  margin-left: 15px;
+}
+
+.tblActions {
+  width: 111px;
+  text-align: center !important;
+}
+
+.chosen-choices input {
+  border: none !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
+}
+
+.chosen-choices input {
+  margin-top: 0;
+}
+
+.lblPaid {
+  min-width: 200px;
+}
+
+.checkbox {
+  width: 150px;
+  float: left;
+}
+
+.thCategoryTitle {
+  text-align: center !important;
+}
+
+.thTitle {
+  text-align: center !important;
+}
+
+.thTitle td {
+  text-align: center !important;
+}
+
+
+.paidBox {
+  height: 40px;
+}
+
+.messageContainer {
+  text-align: center;
+}
+
+.forgottenPassword {
+  float: right;
+  width: 135px;
+}
+
+.passwordFields {
+  text-align: center;
+}
+
+.loginFields input {
+  width: 300px;
+}
+
+.signIn {
+  width: 90%;
+  margin: 5px auto 0 auto;
+}
+
+.btn-sign-in {
+  width: 100% !important;
+}
+
+.rememberBox {
+  text-align: center;
+  height: 30px;
+  max-width: 310px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.actions button {
+  width: 300px;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.table-condensed th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.table-condensed th .asc {
+  background-image: image-url("up_arrow.gif");
+}
+
+.table-condensed th .desc {
+  background-image: image-url("down_arrow.gif");
+}
+
+.fieldEvent {
+  float: left;
+}
+
+.userBox {
+  margin-top: 50px;
+}
+
+.labelBox {
+  width: 200px;
+  float: left;
+}
+
+.eventFields {
+  width: 241px;
+  min-width: 241px;
+}
+
+.clearFromFloat {
+  clear: both;
+}
+
+.map {
+  float: right;
+}
+
+.errorField {
+  border: 1px solid red !important;
+}
+
+.footer {
+  border-top: 1px rgb(229, 229, 229) solid;
+  padding-top: 10px;
+}
+
+/* Table styles */
+.thCountry {
+  text-align: center  !important;
+}
+
+.thUserName {
+  min-width: 100px;
+}
+
+.thVerified {
+  text-align: center  !important;
+}
+
+.thEventTitle {
+  text-align: center  !important;
+}
+
+.thCreatorName {
+  text-align: center  !important;
+}
+
+.thAddress {
+  text-align: center  !important;
+}
+
+.tdVerified {
+  text-align: center !important;
+}
+
+.formField {
+  max-width: 780px;
+  clear: both;
+  margin: 5px auto;
+  height: 45px;
+}
+
+.fieldBoxCountries {
+  width: 780px;
+  clear: both;
+  margin: 0 auto;
+  height: auto;
+}
+
+.formField input {
+  float: left;
+  margin-right: 5px;
+}
+
+.fieldEvent .error{
+  float: none;
+}
+
+.eventFields .control-group {
+  height: auto;
+}
+
+.btnActions {
+  text-align: center;
+  height: 50px;
+  margin-top: 30px;
+}
+
+.fieldEvent .checkbox {
+  height: 30px;
+  margin-top: 5px;
+}
+
+.default.valid  {
+  border: 0!important;
+  background: transparent !important;
+  box-shadow: none;
+  color: #999;
+  font-size: 100%;
+  font-family: sans-serif;
+  line-height: normal;
+  border-radius: 0;
+  margin-top: 5px;
+}
+
+.default.valid:focus {
+  border: 0!important;
+  background: transparent!important;
+  box-shadow: none;
+  color: #999;
+  font-size: 100%;
+  font-family: sans-serif;
+  line-height: normal;
+  border-radius: 0;
+  transition: none;
+  margin-top: 5px;
+}
+
+/* Fix map controls. Set another style on Bootstrap */
+#map-canvas img {
+  max-width: none !important;
+}
+
+/* Payments */
+.paymentsBox {
+  margin-top: 20px;
+}
+
+#tblTransactions td {
+  text-align: center;
+}
+
+#tblTransactions th {
+  text-align: center;
+}
+
+.b-search-user p {
+  float: left;
+  font-size: 16px;
+  padding: 4px 0 0 0;
+  margin-right: 10px;
+}
+
+.b-search-user input {
+  margin: 0 !important;
+}
+
+.b-top-menu {
+  margin: 0 auto;
+  padding-top: 23px;
+  margin-left: 160px;
+}
+
+.b-top-menu a{
+  color: #c7c0de !important;
+  box-shadow: initial !important;
+  text-shadow: inherit !important;
+  text-decoration: none;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+}
+
+.b-top-menu a:hover{
+  color: white !important;
+  text-decoration: none;
+
+}
+
+.right-shift {
+  margin-right: 25px;
+}
+
+.b-logout {
+  float: right;
+  margin-top: -20px;
+  color: #c7c0de !important;
+  box-shadow: initial !important;
+  text-shadow: inherit !important;
+  text-decoration: none;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+}
+
+.b-logout a {
+  color: #c7c0de !important;
+}
+
+.b-logout a:hover {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.container {
+  width: initial !important;
+  max-width: 940px !important;
+  padding: 0 15px 0 15px;
+  margin-top: 25px;
+}
+
+.jumbotron a {
+  margin-bottom: 5px;
+}
+
+.b-top-wrapper {
+  font-size: 1.2em;
+}
+
+.muted {
+  text-align: center !important;
+  color: #C3C3C3 !important;
+}
+
+.lead {
+  color: rgb(116, 116, 116);
+}
+
+@media screen and (max-width: 500px)  {
+  .b-logout {
+    float: none;
+    margin-top: 32px;
+    margin-right: 25px;
+  }
+}
+
+@media screen and (min-width: 150px) and (max-width: 621px)  {
+  .b-search-user p{
+    width: 100%;
+  }
+
+  .b-search-user input{
+    width: 70% !important;
+    margin-bottom: 5px !important;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  .labelBox {
+    width: 100%;
+  }
+
+  .formField input {
+    float: inherit;
+  }
+
+  #gender {
+    float: none;
+  }
+
+  .inputBox label {
+    margin: 0 auto;
+    float: none;
+  }
+
+  .formField {
+    margin: 0px auto;
+    height: inherit;
+  }
+
+  /* Event page */
+  .fieldEvent {
+    float: none;
+  }
+
+  .paidBox label {
+    margin: 0 auto;
+    float: none;
+  }
+
+  .map {
+    float: none;
+  }
+
+  #map-container {
+    width: 100%;
+  }
+
+  .fieldBoxCountries {
+    width: inherit;
+  }
+
+  /* Login box */
+  #loginBox input{
+    width: 90%;
+  }
+
+  #remember_me {
+    width: 15px !important;
+  }
+
+  .checkbox {
+    padding-left: 25px !important;
+  }
+}
+
+@media screen and (min-width: 150px) and (max-width: 414px) {
+  .jumbotron a {
+    width: 61%;
+  }
+}
+
+/* Header styles */
+header {
+  margin-top: 0;
+  color: #c7c0de;
+  height: auto;
+  background-color: #3B2F63;
+  background-image: radial-gradient(circle at 50% top, rgba(84,90,182,0.6) 0%,rgba(84,90,182,0) 75%),radial-gradient(circle at right top, #794aa2 0%,rgba(121,74,162,0) 57%);
+  background-repeat: no-repeat;
+  background-size: 100% 1000px;
+  padding: 0 15px;
+}
+
+.b-clear {
+  clear: both;
+}
+
+.top-navigate a:hover {
+  transition: none;
+  -o-transition: none;
+  -ms-transition: none;
+  -moz-transition: none;
+  -webkit-transition: none;
+  zoom: 1;
+  filter: alpha(opacity=50);
+  opacity: 0.95;
+}
+
+.wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.b-logo {
+  width: 122px;
+  padding-top: 15px;
+  float: left;
+  position: relative;
+  z-index: 2;
+}
+
+.b-logo a {
+  color: transparent;
+  font: 0/0 a;
+  text-shadow: none;
+  width: 122px;
+  height: 32px;
+  display: block;
+  background-repeat: no-repeat;
+
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opactiy 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.b-logo a:hover {
+  zoom: 1;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+.top-navigate {
+  position: relative;
+  float: right;
+  font-size: 1em;
+  line-height: 1;
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+.top-navigate li{
+  float: left;
+  margin: 0;
+  padding: 0 9px;
+}
+
+.top-navigate li a {
+  color: #c7c0de !important;
+  text-decoration: none;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+}
+
+.nav a{
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opactiy 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.nav a:hover{
+  zoom: 1;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+.top-navigate li a:hover{
+  color: white !important;
+  text-decoration: none;
+}
+
+header {
+  height: 140px;
+}
+
+.header-text {
+  font-size: 1.32em;
+  /* padding-top: 61px; */
+  color: white;
+  max-width: 1140px;
+  margin: 0 auto;
+  /* text-align: center; */
+  margin-top: -22px;
+  padding-bottom: 58px;
+  margin-left: 140px;
+}
+
+.btn-navbar {
+  margin-bottom: 9px;
+}
+
+.mod-signup {
+  background-image: -webkit-linear-gradient(#fff, #E7E4EE);
+  background-image: linear-gradient(#fff, #E7E4EE);
+  background-color: white;
+  color: #58488a;
+  display: inline-block;
+  min-width: 240px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+  border-radius: 5px;
+  font-weight: bold;
+  line-height: 1;
+  margin: 0 auto;
+  max-width: 220px;
+  padding: 0.8em;
+  margin-top: 10px;
+  height: 16px;
+  text-align: center;
+  font-size: 0.5em !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mod-signup a{
+  color: #58488a !important;
+  text-decoration: none;
+}
+
+.top-slider {
+  position: relative;
+  display: block;
+  padding: 1.25em 2.5em;
+  margin: 0;
+  text-decoration: none;
+  font-weight: 200;
+  text-align: center;
+  background: #F8F8F8;
+  color: #444;
+  font-size: 19px;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+body {
+  padding: 0 !important;
+}
+
+.b-logo-lock {
+  width: 100px;
+  margin: 25px auto;
+}
+
+.remember-label {
+  text-align: left;
+}
+
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+  border-color: rgba(103, 56, 200, 0.8) !important;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(127, 82, 236, 0.6) !important;
+}
+.btn-cool {
+  text-align: center;
+  background-repeat: repeat-x;
+  height: 30px;
+  width: 170px;
+  padding-top: 8px;
+  font-size: 1.3em;
+  vertical-align: middle;
+  color: white;
+  background-color: rgba(71, 68, 102, 0.8);
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid rgba(97, 34, 155, 0.16);
+  margin-bottom: 5px;
+  margin-right: 6px;
+  display: inline-block;
+}
+
+.btn-cool:hover {
+  color: white !important;
+  background-color: rgba(155, 153, 173, 0.8);
+  text-decoration: none !important;
+}
+
+.btn-cool-small {
+  height: 20px;
+  width: 154px;
+  padding-top: 3px;
+  padding-bottom: 2px;
+  font-size: 1.2em;
+}
+
+.btns-navigate {
+  width: 100%;
+  text-align: center;
+}
+
+.sended {
+  width: 8px;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(97, 110, 178, 0.59);
+  height: 8px;
+  position: absolute;
+  border-radius: 15px;
+  margin-top: -13px;
+  margin-left: 85px;
+}
+
+.nosend {
+  width: 8px;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(109, 200, 99, 0.59);
+  height: 8px;
+  position: absolute;
+  border-radius: 15px;
+  margin-top: -13px;
+  margin-left: 85px;
+}

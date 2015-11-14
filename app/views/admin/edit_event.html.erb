@@ -1,0 +1,151 @@
+<% javascript 'events.js' %>
+
+<div class="container">
+  <div class="wrapper">
+    <div class="masthead">
+      <% if @event.id %>
+          <h3 class="muted">CoEvents - Edit event</h3>
+          <!--Title of this page-->
+          <% title "CoEvents - Edit event" %>
+      <% else %>
+          <h3 class="muted">CoEvents - Create new event</h3>
+          <!--Title of this page-->
+          <% title "CoEvents - Create event" %>
+      <% end %>
+    </div>
+    <% if @event.id %>
+        <div class="boxApprove">
+          <!--Show button "Approve" only on edit_event page-->
+          <div class="approve">
+            <% if @event.send_message == FALSE %>
+                <button class="btn btn-success" id="btnSendMessage" name="button">Send messages</button>
+            <% else %>
+                <button class="btn btn-warning" id="btnSendMessage" name="button">Repeat send</button>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+    <%= form_tag({controller: "admin", action: "create"}, method: "post", id: "editForm") do %>
+        <div class="fieldEvent">
+          <h4>Event data</h4>
+          <!--Hidden field: Event id-->
+          <%= hidden_field_tag :id, @event.id, id: 'eventId' %>
+          <!--Hidden field: Send-->
+          <%= hidden_field_tag :message_send, @event.send_message, id: 'eventSendMessage' %>
+          <!--Event title-->
+          <div class="formBox">
+            <label for="name">Event title</label>
+            <% if @error_fields.include?("name") %>
+                <%= text_field_tag :title, @event.title, :placeholder => "Event name", id: 'name', class: 'error' %>
+            <% else %>
+                <%= text_field_tag :title, @event.title, :placeholder => "Event name", id: 'name'%>
+            <% end %>
+          </div>
+          <!--Event start date -->
+          <div class="formBox">
+            <label for="pickerStartTime">Start date</label>
+            <% if @error_fields.include?("name") %>
+                <%= text_field_tag :start_date,@event.start_date, :readonly => true, :placeholder => "Start date", id: 'pickerStartTime', class: 'error' %>
+            <% else %>
+                <%= text_field_tag :start_date, @event.start_date, :readonly => true, :placeholder => "Start date", id: 'pickerStartTime' %>
+            <% end %>
+          </div>
+          <!--Event end date-->
+          <div class="formBox">
+            <label for="pickerEndTime">End date</label>
+            <% if @error_fields.include?("name") %>
+                <%= text_field_tag :end_date, @event.end_date, :readonly => true, :placeholder => "End date", id: 'pickerEndTime', class: 'error' %>
+            <% else %>
+                <%= text_field_tag :end_date, @event.end_date, :readonly => true, :placeholder => "End date", id: 'pickerEndTime' %>
+            <% end %>
+          </div>
+          <!--Paid-->
+          <div class="paidBox">
+            <label class="checkbox">
+              <% if @event.paid %>
+                  <%= check_box_tag :paid, nil, params[:paid], :checked => true %>
+              <% else %>
+                  <%= check_box_tag :paid, nil, params[:paid], :checked => false %>
+              <% end %>
+              <%= label_tag :paid %>
+            </label>
+          </div>
+          <!--Event payment amount-->
+          <div id="paymentWrapper">
+              <div class="paymentAmount">
+                <label for="payment_amount">Payment amount</label>
+                <%= text_field_tag :payment_amount, @event.payment_amount, :placeholder => "$0.00" %>
+              </div>
+          </div>
+          <!--Event address-->
+          <div class="formBox">
+            <label for="address">Address</label>
+            <% if @event.longitude != nil %>
+                <% if (@event.latitude != nil && @event.longitude != nil) then %>
+                    <%= text_field_tag :address, @event.address, :placeholder => "Address", id: 'eventAddress' %>
+                    <%= hidden_field_tag :latitude, @event.latitude, id: 'eventLatitude' %>
+                    <%= hidden_field_tag :longitude, @event.longitude, id: 'eventLongitude' %>
+                <% else %>
+                    <%= text_field_tag :address, nil, :placeholder => "Address" %>
+                    <%= hidden_field_tag :latitude, 0, id: 'eventLatitude' %>
+                    <%= hidden_field_tag :longitude, 0, id: 'eventLongitude' %>
+                <% end %>
+            <% else %>
+                <%= text_field_tag :address, nil, :placeholder => "Address" %>
+                <%= hidden_field_tag :latitude, 0, id: 'eventLatitude' %>
+                <%= hidden_field_tag :longitude, 0, id: 'eventLongitude' %>
+            <% end %>
+          </div>
+          <!--Event category-->
+          <div class="formBox">
+            <label for="category_id">Event category</label>
+            <% if @event.category %>
+                <%= collection_select(:category, :id, Category.all, :id, :title, {:selected => @event.category_id}, {:class => 'chosen-select', :multiple => false}) %>
+            <% else %>
+                <% if Category.exists? %>
+                    <%= collection_select(:category, :id, Category.all, :id, :title, {:selected => Category.first.id}, {:class => 'chosen-select', :multiple => false}) %>
+                <% else %>
+                    <%= collection_select(:category, :id, Category.all, :id, :title, {:class => 'chosen-select', :multiple => false}) %>
+                <% end %>
+            <% end %>
+          </div>
+          <!--Content-->
+          <div class="formBox">
+            <label for="content">Content</label>
+            <% if @event.content != nil %>
+                <% if (@event.latitude != nil && @event.longitude != nil) then %>
+                    <%= text_area(:event, :content, cols: 20, rows: 5, id: 'eventContent') %>
+                <% else %>
+                    <%= text_area(:event, :content, cols: 20, rows: 5, :placeholder => "Let's write something", id: 'eventContent') %>
+                <% end %>
+            <% else %>
+                <%= text_area(:event, :content, cols: 20, rows: 5, :placeholder => "Let's write something", id: 'eventContent') %>
+            <% end %>
+          </div>
+          <!--Users-->
+          <div class="fieldBoxUser">
+            <div class="labelBox">
+              <label>Users</label>
+            </div>
+            <div class="inputBox">
+              <%= collection_select(:users, :id, User.all, :id, :user_name, {:selected => @list}, {:class => 'chosen-select', :multiple => true}) %>
+            </div>
+          </div>
+          <div class="actions">
+            <% if @event.id %>
+                <%= submit_tag "Update event", class: "btn btn-primary" %>
+            <% else %>
+                <%= submit_tag "Create event", class: "btn btn-primary" %>
+            <% end %>
+            <%= link_to 'Cancel', url_for(:back), class: "btn btn-warning" %>
+          </div>
+        </div>
+        <div class="map">
+          <h4>Map</h4>
+          <div id="map-container">
+            <div id="map-canvas"></div>
+          </div>
+        </div>
+    <% end %>
+  </div><!-- /wrapper -->
+</div> <!-- /container -->

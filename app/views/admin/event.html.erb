@@ -1,0 +1,51 @@
+<% javascript 'eventsList.js' %>
+<% title "CoEvents - Event list" %>
+
+<div class="container">
+  <!--Verified-->
+  <div class="inputBox">
+    <label class="checkbox">
+      <%= check_box_tag :send_message, nil, params[:send_message], checked: false %>
+      <%= label_tag :send_message, 'Sended messages' %>
+    </label>
+  </div>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <table class="table table-condensed">
+    <tr class="thTitle">
+      <th><%= sortable "id", "#" %></th>
+      <th class="thEventTitle"><%= sortable "title", "Event title" %></th>
+      <th class="thAddress"><%= sortable "address", "Address" %></th>
+      <th class="thTitle">Notifications</th>
+      <th></th>
+    </tr>
+    <% if @event != nil %>
+        <% @event.each do |event| %>
+            <tr class="eventLight">
+              <td class="eventId"><%= event.id %></td>
+              <td class="thEventTitle"><%= event.title %></td>
+              <td class="thAddress"><%= event.address %></td>
+              <td class="tblActions">
+                <%= link_to "Send", events_notifications_path(:id => event.id) %>
+                <% if event.send_message %>
+                    <div class="sended"></div>
+                <% else %>
+                    <div class="nosend"></div>
+                <% end %>
+              </td>
+              <td class="tblActions">
+                <%= link_to 'Edit', events_update_path(id: event.id) %>
+                <%= link_to 'Remove', controller: 'admin', action: 'destroy', id: event.id %>
+              </td>
+            </tr>
+        <% end %>
+    <% end %>
+  </table>
+
+  <%= will_paginate @event if @event.present? %>
+
+  <div class="actions">
+    <%= link_to 'New Event', events_create_path, class: 'btn-cool btn-cool-small' %>
+    <%= link_to 'Back', { action: 'show', controller: 'admin' }, class: 'btn-cool btn-cool-small' %>
+  </div>
+</div>

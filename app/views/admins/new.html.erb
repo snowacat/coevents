@@ -1,0 +1,20 @@
+<%= form_for @admin do |f| %>
+    <% if @admin.errors.any? %>
+        <ul>
+          <% @admin.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+    <%= f.label :login %>
+    <%= f.text_field :login %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+
+    <%= f.submit 'Sign In' %>
+<% end %>
