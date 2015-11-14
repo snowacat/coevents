@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CoEvents - Show Events</title>
+    <!-- Bootstrap minified CSS CDN -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+    <link href="stylesheets/bootstrap-combined.min.css" type="text/css" rel="stylesheet">
+    <!-- Default css -->
+    <link href="stylesheets/dtree.css" type="text/css" rel="stylesheet">
+    <link href="stylesheets/styles.css" type="text/css" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="i/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="i/favicons//apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="i/favicons//apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="i/favicons//apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="i/favicons//apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="i/favicons//apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="i/favicons//apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="i/favicons//apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="i/favicons//apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="i/favicons//favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="i/favicons//android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="i/favicons//favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="i/favicons//favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="i/favicons//manifest.json">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="i/favicons//mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- General Scripts -->
+    <script type="text/javascript" src="js/libs/angular.min.js"></script>
+    <script type="text/javascript" src="js/libs/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/libs/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/libs/angular-animate.min.js"></script>
+    <script type="text/javascript" src="js/libs/angular.treeview.js"></script>
+    <script type="text/javascript" src="js/libs/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="js/libs/lodash.js"></script>
+    <script type="text/javascript" src="js/libs/angular-google-maps.min.js"></script>
+    <script src='//maps.google.com/maps/api/js?sensor=false'></script>
+    <!-- Graph -->
+    <script data-require="d3@*" data-semver="3.3.11" src="http:////cdnjs.cloudflare.com/ajax/libs/d3/3.3.11/d3.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/chinmaymk/angular-charts/bower/dist/angular-charts.min.js"></script>
+
+     <!-- Function Scripts -->
+    <script type="text/javascript" src="js/app.module.js"></script>
+    <script type="text/javascript" src="js/controllers/HomeController.js"></script>
+    <script type="text/javascript" src="js/controllers/ModalInstanceController.js"></script>
+    <script type="text/javascript" src="js/services/events.js"></script>
+</head>
+<body ng-controller="HomeController">
+<div class="main-wrapper">
+<header>
+    <div class="wrapper">
+        <div class="b-logo">
+            <a href="index.html"></a>
+        </div>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed" class="btn btn-navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div collapse="navCollapsed" class="nav-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav">
+                        <li><a href="/index">Events</a></li>
+                        <li><a href="#/graphics">Graphics</a></li>
+                        <li><a href="/admin">Admin Panel</a></li>
+                    </ul>
+                </div>
+            </div><!-- /navbar-inner -->
+        </div><!-- /navbar -->
+        <div class="b-clear"></div>
+    </div>
+    <div class="header-text">
+        <p>Look more events everyday</p>
+        <div class="mod-signup">
+            <a class="button" href="#">Sign up for free</a>
+        </div>
+    </div>
+</header>
+<div class="top-slider">
+    <div class="wrapper">
+        <script type="text/ng-template" id="myModalContent.html">
+            <div class="modal-body">
+                <ui-gmap-google-map center="map.center" zoom="map.zoom">
+                    <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-ok" ng-click="ok()">CLOSE</button>
+            </div>
+        </script>
+       <!-- <div ng-view class="slide"></div> -->
+     </div>
+ </div>
+     <div ng-view class="wrapperContent at-view-fade-in
+              at-view-fade-out"></div>
+</div>
+<div class="clearFromFloat"></div>
+<footer>
+    <div class="wrapper">
+        <div class="b-logo">
+            <a href="index.html"></a>
+        </div>
+        <div class="footer-text">
+            <p>&copy; CoEvents 2015 - Look more events everyday!</p>
+            <p>Powered by Alexander Kravchenko</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

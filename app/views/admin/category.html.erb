@@ -1,0 +1,41 @@
+<% javascript 'eventsList.js' %>
+<% title 'CoEvents - All categories' %>
+<div class="container">
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <table class="table table-condensed">
+    <tr class="thTitle">
+      <th><%= sortable "id", "#" %></th>
+      <th class="thCategoryTitle" ><%= sortable 'title', 'Category title' %></th>
+      <th class="thParent">Parent</th>
+      <th></th>
+    </tr>
+    <% if @categories != nil %>
+        <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.id %></td>
+              <td class="thTitle"><%= category.title %></td>
+              <td>
+                <% @categories_all.each do |search_category_parent| %>
+                    <% if search_category_parent.id == category.parent %>
+                        <%= search_category_parent.title %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+              </td>
+              <td class="tblActions">
+                <%= link_to 'Edit', controller: 'admin', action: 'edit_category', id: category.id %>
+                <%= link_to 'Remove', controller: 'admin', action: 'category_destroy', id: category.id %>
+              </td>
+            </tr>
+        <% end %>
+    <% end %>
+  </table>
+
+  <%= will_paginate @categories if @categories.present? %>
+
+  <div class="actions">
+    <%= link_to 'New Category', { action: 'edit_category', controller: 'admin' }, class: 'btn-cool btn-cool-small' %>
+    <%= link_to 'Back', { action: 'show', controller: 'admin' }, class: 'btn-cool btn-cool-small' %>
+  </div>
+</div>

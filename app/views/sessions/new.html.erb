@@ -1,0 +1,36 @@
+<% title "CoEvents.Ru - Login Form" %>
+
+<div class="container">
+  <div id="loginBox">
+    <div class="masthead">
+      <div class="b-logo-lock"> <%= image_tag 'lock.png' %> </div>
+    </div>
+    <%= form_tag({controller: 'sessions', action: 'create'}, method: 'post', id: 'loginForm') do %>
+        <div class="loginFields">
+          <!--User login-->
+          <div class="fieldBoxLogin">
+            <%= text_field_tag :login, nil, placeholder: 'Login', id: 'login' %>
+          </div>
+          <!--User password-->
+          <div class="fieldBoxLogin">
+            <%= password_field_tag :password, nil, placeholder: 'Password', id: 'password' %>
+          </div>
+        </div>
+        <div class="rememberBox">
+          <label class="checkbox">
+            <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+            <%= label_tag :remember_me, nil, class: 'remember-label' %>
+          </label>
+          <label class="forgottenPassword">
+            <%= link_to 'Forgotten password?', new_password_reset_path %>
+          </label>
+        </div>
+        <% if @showCaptcha %>
+            <div class="reCaptcha">
+              <%= raw recaptcha_tag(:challenge, row: 3, cols: 1) %>
+            </div>
+        <% end %>
+        <div class="signIn"><%= submit_tag 'Sign In', class: 'btn btn-sign-in' %></div>
+    <% end %>
+  </div>
+</div>

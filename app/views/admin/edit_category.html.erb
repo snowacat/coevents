@@ -1,0 +1,63 @@
+<% javascript 'category.js' %>
+
+<div class="container">
+  <div class="masthead">
+    <% if @category.id %>
+        <h3 class="muted">CoEvents - Edit category</h3>
+        <!--Title of this page-->
+        <% title "CoEvents - Edit category" %>
+    <% else %>
+        <h3 class="muted">CoEvents - Create new category</h3>
+        <!--Title of this page-->
+        <% title "CoEvents - Create category" %>
+    <% end %>
+  </div>
+  <div class="userBox">
+    <%= form_tag({controller: "admin", action: "edit_category"}, method: "post", id: "userForm") do %>
+        <!--Hidden field: User id-->
+        <%= hidden_field_tag :category_id, @category.id, id: 'categoryId' %>
+        <!--Category title-->
+        <% if @error_fields.include?("Category") %>
+            <div class="formField">
+              <div class="labelBox">
+                <label for="userName">Category title</label>
+              </div>
+              <div class="control-group error">
+                <%= text_field_tag :title, @category.title, :placeholder => "Category title", id: 'categoryTitle', class: 'error' %>
+              </div>
+            </div>
+        <% else %>
+            <div class="formField">
+              <div class="labelBox">
+                <label for="userName">Category title</label>
+              </div>
+              <div class="inputBox">
+                <%= text_field_tag :title, @category.title, :placeholder => "Category title", id: 'categoryTitle' %>
+              </div>
+            </div>
+        <% end %>
+        <!--Parent category-->
+        <div class="formField">
+          <div class="labelBox">
+            <label for="category">Category parent</label>
+          </div>
+          <div class="inputBox">
+            <% if @category.parent %>
+                <%= collection_select(:category_parent, :id, Category.all, :id, :title, {:selected => @category.parent}, {:class => 'chosen-select', :multiple => false}) %>
+            <% else %>
+                <%= collection_select(:category_parent, :parent, Category.all, :id, :title, {:prompt => 'Select category'}, {:class => 'chosen-select', :multiple => false}) %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="btnActions">
+          <% if @category.id %>
+              <%= submit_tag "Update category", class: "btn btn-primary" %>
+          <% else %>
+              <%= submit_tag "Create category", class: "btn btn-primary" %>
+          <% end %>
+          <%= link_to 'Cancel', url_for(:back), class: "btn btn-warning" %>
+        </div>
+    <% end %>
+  </div><!-- /userBox -->
+</div> <!-- /container -->

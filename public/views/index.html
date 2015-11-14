@@ -1,0 +1,46 @@
+<div id="leftBox">
+    <div id="categories">
+        <h3>Categories</h3>
+        <div
+                data-angular-treeview="true"
+                data-tree-id="category"
+                data-tree-model="treedata"
+                data-node-id="value.id"
+                data-node-label="value.title"
+                data-node-children="children" >
+        </div>
+    </div>
+    <div id="participant">
+        <h3>Participants</h3>
+        <div class="b-participant">
+            <select class="form-control" ng-model="author" ng-options="author.user_name for author in authors" ng-change="authorChanged()">
+            </select>
+        </div>
+    </div>
+    <div class="clearFromFloat"></div>
+</div>
+<div id="rightBox">
+    <h3>Events</h3>
+    <div id="events">
+        <!-- Output all events -->
+        <div class="post" ng-repeat="post in posts">
+            <p class="title">{{post.title}}</p>
+            <p class="content">{{post.content}}</p>
+            <div class="participants">
+                <p><strong>Participants: </strong></p>
+                <p class="authors" ng-repeat="user in post.users">
+                    {{user.user_name}}
+                </p>
+                <p class="time">{{post.created_at | date:'HH:mm yyyy-MM-dd'}}</p>
+                <p class="compass-arrow" ng-click="open(post.latitude, post.longitude)"></p>
+                <input type="hidden" ng-model="lat" value="{{post.latitude}}"/>
+            </div>
+            <div class="clearFromFloat"></div>
+        </div>
+        <div id="more">
+            <a ng-click="getMore(events)" ng-class="noClickMore">{{lblMore}}</a>
+            <!-- Box for image "loading..." -->
+            <div ng-class="inLoading"></div>
+        </div>
+    </div>
+</div>

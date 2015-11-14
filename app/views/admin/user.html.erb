@@ -1,0 +1,51 @@
+<% javascript 'country_dotted.js' %>
+<% title "CoEvents - All users" %>
+
+<div class="container">
+  <div class="b-search-user">
+    <p>Search:</p>
+    <%= form_tag({controller: 'admin', action: 'find_users'}, method: 'get') do %>
+        <%= text_field_tag :name_user, cookies[:name_user], placeholder: 'User Name' %>
+        <%= text_field_tag :email_user, cookies[:email_user], placeholder: 'User Email' %>
+        <%= submit_tag 'Find', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+  <%= hidden_field_tag :direction, params[:direction] %>
+  <%= hidden_field_tag :sort, params[:sort] %>
+  <table class="table table-condensed">
+    <tr>
+      <th class="thUserName"><%= sortable 'users.user_name', 'User name' %></th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th class="thVerified"><%= sortable 'verified', 'Verified' %></th>
+      <th></th>
+    </tr>
+    <% if @users.present? %>
+        <% @users.each_with_index do |user, i| %>
+            <tr class="eventLight">
+              <td><%= user.user_name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.phone_number %></td>
+              <td class="tdVerified">
+                <% if user.verified == true %>
+                    yes
+                <% else %>
+                    no
+                <% end %>
+              </td>
+              <td class="tblActions">
+                <%= link_to 'Edit', user_update_path(id: user.id) %>
+                <%= link_to 'Remove', controller: 'admin', action: 'destroy_user', id: user.id %>
+              </td>
+            </tr>
+        <% end %>
+    <% end %>
+  </table>
+
+  <%= will_paginate @users if @users.present? %>
+
+  <div class="actions">
+    <%= link_to 'New User', users_new_path, class: 'btn-cool btn-cool-small' %>
+    <%= link_to 'Back', {action: 'show', controller: 'admin'}, class: 'btn-cool btn-cool-small' %>
+  </div>
+</div>

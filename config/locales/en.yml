@@ -1,0 +1,76 @@
+en:
+  could_not_find_event: Could not find event with id
+  something_went_wrong: Something went wrong
+  not_found_user: Could not found user with id
+  contacts_data_is_not_specified: Contacts data is not specified
+  not_save_media: Could not save media
+  not_found_notification: Notifications not found
+  not_found_news: News not found
+  not_find_post: Could not find post with id
+  not_found_group: Could not find group with id
+  user_already_in_group: This user is already in this group
+  incorrect_email_password: Incorrect email or passwords
+  not_found_user_with_email: User not found with this email
+  incorrect_recovery_code: Incorrect recovery code
+  incorrect_recovery_code_expired_redeemed: Incorrect recovery code. Perhaps it is expired or redeemed
+  missing_required_file: Missing required file
+  card_declined: The card has been declined
+  missing_customer_id: Missing customer id. You need to create customer account.
+  invalid_request: Invalid parameters were supplied to Stripe's API. You can try update customer id.
+  payment_failed: Payment failed
+  not_invited_on_event: Not invited on this event
+  privacy_settings_not_found: Privacy settings not found
+  time:
+    formats:
+      default: "%Y/%m/%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+  activerecord:
+    attributes:
+      user:
+        email: "E-mail address"
+        password: "Password"
+        gender: "Gender"
+        birthdata: "Birth date"
+        phone_number: "Phone number"
+        nationality: "Nationality"
+      event:
+        name: "Name event"
+        start_date: "Start date"
+        end_date: "End date"
+    errors:
+      models:
+        user:
+          attributes:
+            user_name:
+              blank: "Username is required."
+            email:
+              blank: "Email is required"
+              taken: "This email has already been taken."
+              invalid: "Doesn't look like an email address."
+              format: "Doesn't look like an email address."
+            nationality:
+              blank: "Nationality is required."
+            password:
+              blank: "Password is required."
+              confirmation: "Password doesn't match."
+            password_confirmation:
+              blank: "Password confirmation is required."
+              confirmation: "Doesn't match password."
+            gender:
+              blank: "Gender is required."
+              inclusion: "Select correct gender."
+            birthdate:
+              blank: "Birth date is required."
+            phone_number:
+              blank: "Phone number is required."
+        event:
+          attributes:
+            name:
+              blank: "Event name is required."
+            start_date:
+              blank: "Start date is required."
+            end_date:
+              blank: "End date is required."
+            category_id:
+              blank: "Category is required."

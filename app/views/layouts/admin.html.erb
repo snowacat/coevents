@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= yield(:head) %>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta content="width=device-width, user-scalable=no" name="viewport">
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDTb3UwEZWhO3Vu6-IKAkZzRy3indX-YUU&sensor=true "></script>
+  <link rel="apple-touch-icon" sizes="57x57" href="<%= image_path 'favicons/apple-touch-icon-57x57.png' %>">
+  <link rel="apple-touch-icon" sizes="60x60" href="<%= image_path 'favicons/apple-touch-icon-60x60.png' %>">
+  <link rel="icon" type="image/png" href="<%= image_path 'favicons/favicon-32x32.png' %>" sizes="32x32">
+  <link rel="icon" type="image/png" href="<%= image_path 'favicons/favicon-16x16.png' %>" sizes="16x16">
+  <link rel="manifest" href="<%= image_path 'favicons/manifest.json' %>">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+<body>
+<header>
+  <div class="wrapper">
+    <div class="b-logo">
+      <a href="index.html"></a>
+    </div>
+    <% if admin? %>
+        <div class="b-top-menu">
+          <%= link_to 'Main', admin_path, class: 'right-shift' %>
+          <%= link_to 'Web', index_path %>
+        </div>
+        <div class="b-logout">
+          <% if current_admin %>
+              <%= current_admin.login %>
+              <%= link_to 'Logout', logout_path %>
+          <% else %>
+              <%= link_to 'Login', login_path %>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</header>
+<!--Container for any message-->
+<div class="messageContainer">
+  <% flash.each do |name, msg| %>
+      <% if name %>
+          <% case name %>
+  <% when :notice %>
+              <div class="alert alert-success">
+                <%= msg %>
+              </div>
+          <% when :error %>
+              <div class="alert alert-error">
+                <%= msg %>
+              </div>
+          <% else %>
+              <div class="alert alert-info">
+                <%= msg %>
+              </div>
+          <% end %>
+      <% end %>
+  <% end %>
+</div>
+<%= yield %>
+<!--Container for footer-->
+<div class="container">
+  <div class="clearFromFloat"></div>
+  <div class="footer">
+    <p>&copy; CoEvents <%= Time.now.year %></p>
+  </div>
+</div>
+<!-- /container -->
+</body>
+</html>

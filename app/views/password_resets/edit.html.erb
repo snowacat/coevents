@@ -1,0 +1,36 @@
+<% title "CoEvents - Create new password" %>
+<div class="container">
+  <div class="masthead">
+    <h3 class="muted">CoEvents - Reset Password</h3>
+  </div>
+  <div id="resetPassword">
+    <%= form_for @admin, :url => password_reset_path(params[:id]), id: "passwordCreateForm" do |f| %>
+        <% if @admin.errors.any? %>
+            <div class="error_messages">
+              <h2>Form is invalid</h2>
+              <ul>
+                <% for message in @admin.errors.full_messages %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <div class="fieldBox">
+          <h4>Password: </h4>
+
+          <div class="pictureBox"></div>
+          <%= f.password_field :password, :placeholder => "Password", id: 'password' %>
+        </div>
+        <div class="fieldBox">
+          <h4>Password confirmation: </h4>
+
+          <div class="pictureBox"></div>
+          <%= f.password_field :password_confirmation, :placeholder => "Password confirmation", id: 'passwordConfirmation' %>
+        </div>
+        <div class="actions">
+          <%= submit_tag "Update Password", class: "btn btn-primary" %>
+          <%= link_to "Cancel", {:action => "new", controller: "sessions"}, class: "btn btn-warning" %>
+        </div>
+    <% end %>
+  </div>
+</div> <!-- /container -->
